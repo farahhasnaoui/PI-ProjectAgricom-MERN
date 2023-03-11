@@ -23,7 +23,7 @@ function CreateProduct() {
     const [loading, setLoading] = useState(false)
     const [onEdit, setOnEdit] = useState(false)
     const [products] = state.productsAPI.products
-
+    const [callback, setCallback] = state.productsAPI.callback
    
 
     useEffect(() => {
@@ -36,9 +36,11 @@ function CreateProduct() {
                 }
             })
         }else{
+
             setOnEdit(false)
             setProduct(initialState)
             setImages(false)
+          
         }
     }, [param.id, products])
 
@@ -93,8 +95,10 @@ function CreateProduct() {
             }else{
                 await axios.post('/api/products', {...product, images})
             }
-      
-    
+            
+    setCallback(!callback)
+  
+
         } catch (err) {
             alert(err.response.data.msg)
         }
