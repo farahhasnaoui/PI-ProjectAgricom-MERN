@@ -8,10 +8,7 @@ function ProductItem({product, handleCheck}) {
     const addCart = state.userAPI.addCart
     return (
         <div className="product_card">
-            {
-                 <input type="checkbox" checked={product.checked}
-                onChange={() => handleCheck(product._id)} />
-            }
+       
             <img src={product.images.url} alt="" />
 
             <div className="product_box">
